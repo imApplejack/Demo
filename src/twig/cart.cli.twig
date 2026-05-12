@@ -1,0 +1,9 @@
+{# @var cart Eric\Entity\Cart\Cart #}
+Ma commande: total {{ cart.discountPrice|number_format(2) }}€ {% if cart.discountPrice != cart.originalPrice|number_format(2) %}(total hors promotion: {{ cart.originalPrice|number_format(2) }}€) {% endif %}
+    {% include "discounts.cli.twig" with  { 'discontable' : cart }%}
+
+{% for key, productLine in cart.productsLines %}
+{{ productLine.name }} ({{ productLine.getCartProduct.discountPrice|number_format(2) }}€) X {{ productLine.count }} : {% if productLine.count > 0 %}total ({{ productLine.discountPrice|number_format(2) }}€) {% endif %}{% if productLine.getCartProduct.hasDiscount %}(Prix unité avant promotion {{  productLine.getCartProduct.originalPrice|number_format(2) }}€) {% endif %}
+    {% include "discounts.cli.twig" with  { 'discontable' : productLine.getCartProduct  }%}
+
+{% endfor %}

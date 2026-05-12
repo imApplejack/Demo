@@ -1,0 +1,8 @@
+
+{# @var discontable PriceDiscountableInterface #}
+{% for discount in discontable.getDiscounts %}
+    {{ discount.name }} {% if discount.type.name  ==  'ABSOLUTE'%}{{ discount.value }}€
+{% elseif discount.type.name == 'PERCENT'  %}
+{{ discount.value }}%
+{% endif %}
+{% endfor %}
