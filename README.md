@@ -7,7 +7,7 @@
 
 ### Commandes
 -   `composer test`
--    `composer cs-fixer` verification contraines minimum
+-    `composer cs-fixer`
 
 ### Demo
 -    `php8.2 Demo.php`
